@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import {cn} from "@/lib/utils";
-import {LineChart, Loader, Package, Palette, ShoppingCart, Users} from "lucide-react";
+import {Loader, Palette, WholeWord} from "lucide-react";
 import React from "react";
 import {usePathname} from "next/navigation";
 
@@ -29,6 +29,19 @@ export default function SideNav() {
             Color Converter
         </Link>
         <Link
+            href="/strinfo"
+            className={cn(
+                "flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary",
+                {
+                    "bg-muted": isActive("/color-converter"),
+                    "text-muted-foreground": !isActive("/color-converter"),
+                }
+            )}
+        >
+            <WholeWord className="h-4 w-4"/>
+            String Info
+        </Link>
+        <Link
             href="#"
             className={cn(
                 "flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary",
@@ -39,7 +52,7 @@ export default function SideNav() {
             )}
         >
             <Loader className="h-4 w-4"/>
-            Coming Soon...
+            More Coming Soon...
         </Link>
     </nav>
 }
