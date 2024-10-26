@@ -25,7 +25,8 @@ const rgbToHsl = (r: number, g: number, b: number) => {
     g /= 255
     b /= 255
     const max = Math.max(r, g, b), min = Math.min(r, g, b)
-    let h, s, l = (max + min) / 2
+    let h, s
+    const l = (max + min) / 2
 
     if (max === min) {
         h = s = 0
@@ -36,6 +37,9 @@ const rgbToHsl = (r: number, g: number, b: number) => {
             case r: h = (g - b) / d + (g < b ? 6 : 0); break
             case g: h = (b - r) / d + 2; break
             case b: h = (r - g) / d + 4; break
+        }
+        if (h === undefined) {
+            throw new Error("Invalid color")
         }
         h /= 6
     }
@@ -74,7 +78,7 @@ export default function ColorConverter() {
     })
 
     const updateColor = (format: string, value: string) => {
-        let newColor = { ...color }
+        const newColor = { ...color }
 
         switch (format) {
             case 'hex':
@@ -107,7 +111,7 @@ export default function ColorConverter() {
                 break
             case 'hwb':
                 const [h_hwb, w, b2] = value.split(',').map(Number)
-                newColor.hwb = { h: h_hwb, w, b2 }
+                newColor.hwb = { h: h_hwb, w, b: b2 }
                 break
         }
 

@@ -27,6 +27,7 @@ export default function colorConverter(
     if (from === "RGBA") {
         switch (to) {
             case "RGB": {
+                // eslint-disable-next-line prefer-const
                 let [r, g, b, a] = value.split(",").map(Number)
                 const [br, bg, bb] = context?.backgroundColor?.split(",").map(Number) || [255, 255, 255]
                 r = Math.round(r * a + br * (1 - a))
@@ -86,8 +87,10 @@ export default function colorConverter(
         }
     }
     else if (to === "RGBA") {
-
+        // TODO: Implement conversion from other formats to RGBA
+        throw new Error("Conversion to RGBA is not implemented")
     }
+    throw new Error("Conversion Under Works")
 }
 
 function rgbToHsl(r: number, g: number, b: number): [number, number, number] {
