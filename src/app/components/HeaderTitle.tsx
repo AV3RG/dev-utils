@@ -1,22 +1,14 @@
 "use client";
 
 import {usePathname} from "next/navigation";
+import utils from "@/const/utils";
 
 export default function HeaderTitle() {
 
     const pathName = usePathname()
 
     const utilTitle = (path: string) => {
-        switch (path) {
-            case "/color-converter":
-                return "Color Converter"
-            case "/strinfo":
-                return "String Info"
-            case "/":
-                return "Dashboard"
-            default:
-                return path
-        }
+        return utils.find((utilData) => utilData.pathName == path)?.displayName || path
     }
 
     return (
