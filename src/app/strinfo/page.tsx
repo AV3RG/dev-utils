@@ -6,8 +6,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Button } from "@/components/ui/button"
 import {AlertCircle, Upload} from "lucide-react"
-import unitMaker from "@/app/util/unitMaker"
-import detectLineEndings from "@/app/util/lineEndings"
+import unitMaker from "@/lib/unitMaker"
+import detectLineEndings from "@/lib/lineEndings"
 import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert";
 
 export default function StrInfo() {

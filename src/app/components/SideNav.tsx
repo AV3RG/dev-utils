@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import {cn} from "@/lib/utils";
+import {cn} from "@/lib/cn";
 import {Loader, LucideIcon} from "lucide-react";
 import React from "react";
 import {usePathname} from "next/navigation";
