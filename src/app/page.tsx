@@ -1,8 +1,8 @@
 import { Github } from "lucide-react"
 import Link from "next/link"
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/shadcn/ui/button"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/shadcn/ui/card"
 
 export default function Component() {
     return (

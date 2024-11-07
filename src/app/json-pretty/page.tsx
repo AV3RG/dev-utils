@@ -1,10 +1,10 @@
 'use client'
 
 import React, { useState, useCallback, useEffect } from 'react'
-import { Textarea } from "@/components/ui/textarea"
-import { Alert, AlertDescription } from "@/components/ui/alert"
+import { Textarea } from "@/components/shadcn/ui/textarea"
+import { Alert, AlertDescription } from "@/components/shadcn/ui/alert"
 import {AlertCircle, Clipboard, Upload} from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/shadcn/ui/button"
 import debounce from 'lodash.debounce'
 
 export default function JsonPretty() {

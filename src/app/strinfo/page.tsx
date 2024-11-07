@@ -1,14 +1,14 @@
 'use client'
 
 import { useState, useCallback, useMemo, ChangeEvent } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Textarea } from "@/components/ui/textarea"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/shadcn/ui/card"
+import { Textarea } from "@/components/shadcn/ui/textarea"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/shadcn/ui/tooltip"
+import { Button } from "@/components/shadcn/ui/button"
 import {AlertCircle, Upload} from "lucide-react"
 import unitMaker from "@/lib/unitMaker"
 import detectLineEndings from "@/lib/lineEndings"
-import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert";
+import {Alert, AlertDescription, AlertTitle} from "@/components/shadcn/ui/alert";
 
 export default function StrInfo() {
     const [text, setText] = useState('')
