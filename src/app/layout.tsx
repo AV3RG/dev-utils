@@ -6,8 +6,8 @@ import {
   Wrench,
 } from "lucide-react"
 import React from "react";
-import SideNav from "@/app/components/SideNav";
-import HeaderTitle from "@/app/components/HeaderTitle";
+import SideNav from "@/components/commons/SideNav";
+import HeaderTitle from "@/components/commons/HeaderTitle";
 
 
 const geistSans = localFont({
