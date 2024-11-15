@@ -3,6 +3,8 @@ import Link from "next/link"
 
 import { Button } from "@/components/shadcn/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/shadcn/ui/card"
+import utils from "@/const/utils";
+import comingSoonUtils from "@/const/comingSoonUtils";
 
 export default function Component() {
     return (
@@ -35,32 +37,38 @@ export default function Component() {
                     <div className="container px-4 md:px-6">
                         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8">Available Utils</h2>
                         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                            <Card>
-                                <CardHeader>
-                                    <CardTitle>String Info</CardTitle>
-                                    <CardDescription>Get all the info about a string that you will need.</CardDescription>
-                                </CardHeader>
-                                <CardContent>
-                                    <p>Word count, Byte Count, Line Endings and much more.</p>
-                                </CardContent>
-                                <CardFooter>
-                                    <Link href="/strinfo">
-                                        <Button>Try It</Button>
-                                    </Link>
-                                </CardFooter>
-                            </Card>
-                            <Card>
-                                <CardHeader>
-                                    <CardTitle>Color Converter</CardTitle>
-                                    <CardDescription>Convert between different color formats.</CardDescription>
-                                </CardHeader>
-                                <CardContent>
-                                    <p>HEX, RGB, HSL, and more. (Coming Soon)</p>
-                                </CardContent>
-                                <CardFooter>
-                                    <Button disabled>Coming Soon</Button>
-                                </CardFooter>
-                            </Card>
+                            {utils.map((util) => (
+                                <Card key={util.pathName}>
+                                    <CardHeader>
+                                        <CardTitle>{util.displayName}</CardTitle>
+                                        <CardDescription>{util.cardDescription}</CardDescription>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <p>{util.cardContent}</p>
+                                    </CardContent>
+                                    <CardFooter>
+                                        <Link href={util.pathName}>
+                                            <Button>Try It</Button>
+                                        </Link>
+                                    </CardFooter>
+                                </Card>
+                            ))}
+                            {
+                                comingSoonUtils.map((util) => (
+                                    <Card key={util.displayName}>
+                                        <CardHeader>
+                                            <CardTitle>{util.displayName}</CardTitle>
+                                            <CardDescription>{util.cardDescription}</CardDescription>
+                                        </CardHeader>
+                                        <CardContent>
+                                            <p>{util.cardContent}</p>
+                                        </CardContent>
+                                        <CardFooter>
+                                            <Button disabled>Coming Soon</Button>
+                                        </CardFooter>
+                                    </Card>
+                                ))
+                            }
                         </div>
                     </div>
                 </section>
