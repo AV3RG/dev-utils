@@ -1,4 +1,4 @@
-import {LucideIcon, Sparkles, WholeWord} from "lucide-react";
+import {FileJson2, LucideIcon, Sparkles, WholeWord} from "lucide-react";
 
 const utils: {
   pathName: string,
@@ -14,6 +14,11 @@ const utils: {
     pathName: "/json-pretty",
     icon: Sparkles,
     displayName: "Json Prettifier"
+  },
+  {
+    pathName: "/json-to-ts",
+    icon: FileJson2,
+    displayName: "JSON to TS"
   }
 ]
 
