@@ -7,12 +7,6 @@ import {AlertCircle, Clipboard, Upload} from "lucide-react"
 import { Button } from "@/components/shadcn/ui/button"
 import debounce from 'lodash.debounce'
 
-//TODO: Option to select between interfaces and types
-//TODO: Option to select between single or multiple types
-//TODO: Option to select between readonly or mutable types
-//TODO: Option to select between optional or required types
-//TODO: Handle multiple types in a single array (e.g. [1, "string", true])
-
 export default function JsonToTs() {
     const [input, setInput] = useState('')
     const [output, setOutput] = useState('')
