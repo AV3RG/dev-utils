@@ -26,8 +26,8 @@ export default function JsonPretty() {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const prettifyJSON = useCallback(
-        debounce((value: string) => {
-            const { parsed, error } = parseJSON(value)
+        debounce(() => {
+            const { parsed, error } = parseJSON(input)
             if (error) {
                 setError(error)
             } else {
@@ -35,17 +35,16 @@ export default function JsonPretty() {
                 setError('')
             }
         }, 300),
-        []
+        [parseJSON, input]
     )
 
     const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         const value = e.target.value
         setInput(value)
-        prettifyJSON(value)
     }
 
     useEffect(() => {
-        prettifyJSON(input)
+        prettifyJSON()
     }, [input, prettifyJSON])
 
     return (
