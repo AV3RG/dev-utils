@@ -3,9 +3,10 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { Textarea } from "@/components/shadcn/ui/textarea"
 import { Alert, AlertDescription } from "@/components/shadcn/ui/alert"
-import {AlertCircle, Clipboard, Upload} from "lucide-react"
+import {AlertCircle, Upload} from "lucide-react"
 import { Button } from "@/components/shadcn/ui/button"
 import debounce from 'lodash.debounce'
+import ClickToCopy from "@/components/commons/ClickToCopy";
 
 export default function JsonPretty() {
     const [input, setInput] = useState('')
@@ -91,21 +92,9 @@ export default function JsonPretty() {
                 <div>
                     <h2 className="text-sm font-medium text-gray-700 mb-2">Prettified Output</h2>
                     <pre className="bg-gray-100 p-4 rounded-md overflow-auto h-full min-h-[300px] relative">
-                            <Button
-                                className={"absolute right-4 top-4 p-2 w-fit h-fit"}
-                                size={"icon"}
-                                onClick={async () => {
-                                    try {
-                                        await navigator.clipboard.writeText(output)
-                                    } catch (e) {
-                                        console.error("Error while copying to clipboard:", e)
-                                    }
-                                }}
-                            >
-                                <Clipboard className={"h-4 w-4"} />
-                            </Button>
-                            <code>{output}</code>
-                        </pre>
+                        <ClickToCopy toCopySupplier={() => output} buttonClassName={"absolute right-4 top-4"} />
+                        <code>{output}</code>
+                    </pre>
                 </div>
             </div>
         </div>
