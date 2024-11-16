@@ -7,6 +7,7 @@ import {AlertCircle, Upload} from "lucide-react"
 import { Button } from "@/components/shadcn/ui/button"
 import debounce from 'lodash.debounce'
 import ClickToCopy from "@/components/commons/ClickToCopy";
+import UserInputControls from "@/components/commons/UserInputControls";
 
 export default function JsonToTs() {
     const [input, setInput] = useState('')
@@ -73,19 +74,7 @@ export default function JsonToTs() {
                         </Alert>
                     )}
                 </div>
-                <div className={"flex items-center justify-end gap-x-4"}>
-                    <Button variant="outline" onClick={() => document.getElementById('file-upload')?.click()}>
-                        <Upload className="mr-2 h-4 w-4"/> Upload File
-                    </Button>
-                    <input
-                        id="file-upload"
-                        type="file"
-                        onChange={() => {}}
-                        className="hidden"
-                        accept=".*/*"
-                    />
-                    <Button variant="outline" onClick={() => setInput("")}>Clear</Button>
-                </div>
+                <UserInputControls setInput={setInput} />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
