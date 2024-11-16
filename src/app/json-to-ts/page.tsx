@@ -3,8 +3,7 @@
 import React, {useState, useEffect, useCallback} from 'react'
 import { Textarea } from "@/components/shadcn/ui/textarea"
 import { Alert, AlertDescription } from "@/components/shadcn/ui/alert"
-import {AlertCircle, Upload} from "lucide-react"
-import { Button } from "@/components/shadcn/ui/button"
+import {AlertCircle} from "lucide-react"
 import debounce from 'lodash.debounce'
 import ClickToCopy from "@/components/commons/ClickToCopy";
 import UserInputControls from "@/components/commons/UserInputControls";
@@ -74,7 +73,7 @@ export default function JsonToTs() {
                         </Alert>
                     )}
                 </div>
-                <UserInputControls setInput={setInput} />
+                <UserInputControls setInput={setInput} setErrorMessage={setError} />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
