@@ -16,8 +16,12 @@ import {Input} from "@/components/shadcn/ui/input";
 export default function UserInputControls(props: {
     setInput: (input: string) => void,
     containerClassName?: string,
-    setErrorMessage: (message: string) => void
+    setErrorMessage: (message: string) => void,
+    overrideFileUploadId?: string,
+    sampleDataUrl?: string,
 }) {
+
+    const fileUploadId = props.overrideFileUploadId || "file-upload"
 
     const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0]
@@ -35,12 +39,8 @@ export default function UserInputControls(props: {
         try {
             console.log("Fetching data from URL:", url)
             const response = await fetch(url)
-            const contentType = response.headers.get("content-type")
-            if (!contentType || !contentType.includes("application/json")) {
-                props.setErrorMessage?.("Invalid content type. Please provide a URL that returns JSON.")
-            }
-            const data = await response.json()
-            props.setInput(JSON.stringify(data, null, 2))
+            const data = await response.body?.getReader().read()
+            props.setInput(new TextDecoder().decode(data?.value))
         } catch (e) {
             props.setErrorMessage("Error while fetching data from URL. Please check the URL and try again.")
             console.error("Error while fetching data from URL:", e)
@@ -62,7 +62,7 @@ export default function UserInputControls(props: {
                     </Label>
                     <Input
                         id="link"
-                        defaultValue="https://devutils.rohan.gg/sample_data.json"
+                        defaultValue={props.sampleDataUrl}
                     />
                 </div>
             </div>
@@ -82,11 +82,11 @@ export default function UserInputControls(props: {
                     <Link2 className={"mr-2 h-4 w-4"}/> Load from URL
                 </Button>
             </DialogTrigger>
-            <Button variant="outline" onClick={() => document.getElementById('file-upload')?.click()}>
+            <Button variant="outline" onClick={() => document.getElementById(fileUploadId)?.click()}>
                 <Upload className="mr-2 h-4 w-4"/> Upload File
             </Button>
             <input
-                id="file-upload"
+                id={fileUploadId}
                 type="file"
                 onChange={handleFileUpload}
                 className="hidden"

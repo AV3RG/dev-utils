@@ -1,4 +1,4 @@
-import {FileJson2, LucideIcon, Sparkles, WholeWord} from "lucide-react";
+import {FileJson2, LucideIcon, Sparkles, Volleyball, WholeWord} from "lucide-react";
 
 const utils: {
   pathName: string,
@@ -27,6 +27,13 @@ const utils: {
     displayName: "JSON to TS",
     cardDescription: "Convert JSON to TypeScript interfaces.",
     cardContent: "Generate TypeScript interfaces from your JSON data."
+  },
+  {
+    pathName: "/base-64",
+    icon: Volleyball,
+    displayName: "Base64 Encoder/Decoder",
+    cardDescription: "Encode and decode base64 strings.",
+    cardContent: "Encode and decode base64 strings with ease."
   }
 ]
 
