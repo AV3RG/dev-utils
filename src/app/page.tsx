@@ -53,22 +53,20 @@ export default function Component() {
                                     </CardFooter>
                                 </Card>
                             ))}
-                            {
-                                comingSoonUtils.map((util) => (
-                                    <Card key={util.displayName}>
-                                        <CardHeader>
-                                            <CardTitle>{util.displayName}</CardTitle>
-                                            <CardDescription>{util.cardDescription}</CardDescription>
-                                        </CardHeader>
-                                        <CardContent>
-                                            <p>{util.cardContent}</p>
-                                        </CardContent>
-                                        <CardFooter>
-                                            <Button disabled>Coming Soon</Button>
-                                        </CardFooter>
-                                    </Card>
-                                ))
-                            }
+                            {comingSoonUtils.map((util) => (
+                                <Card key={util.displayName}>
+                                    <CardHeader>
+                                        <CardTitle>{util.displayName}</CardTitle>
+                                        <CardDescription>{util.cardDescription}</CardDescription>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <p>{util.cardContent}</p>
+                                    </CardContent>
+                                    <CardFooter>
+                                        <Button disabled>Coming Soon</Button>
+                                    </CardFooter>
+                                </Card>
+                            ))}
                         </div>
                     </div>
                 </section>

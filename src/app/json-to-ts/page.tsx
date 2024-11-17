@@ -55,10 +55,6 @@ export default function JsonToTs() {
         }
     }, [handleConvert, input])
 
-    useEffect(() => {
-        console.log(input, output, error)
-    }, [input, output, error]);
-
     return (
         <div className="container mx-auto p-4">
             <div className="flex justify-between items-center mb-4">
