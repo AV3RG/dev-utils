@@ -63,6 +63,7 @@ export default function Base64() {
                             setInput={handleDecodedChange}
                             setErrorMessage={setEncodingError}
                             overrideFileUploadId={"decoded-file-upload"}
+                            sampleDataUrl={"https://devutils.rohan.gg/samples/base-64-decoded.txt"}
                         />
                         <div className="mt-4 h-full relative">
                             <Textarea
@@ -96,6 +97,7 @@ export default function Base64() {
                             setInput={handleEncodedChange}
                             setErrorMessage={setDecodingError}
                             overrideFileUploadId={"encoded-file-upload"}
+                            sampleDataUrl={"https://devutils.rohan.gg/samples/base-64-encoded.txt"}
                         />
                         <div className="mt-4 h-full relative">
                             <Textarea
