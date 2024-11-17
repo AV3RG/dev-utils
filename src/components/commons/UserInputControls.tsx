@@ -18,7 +18,7 @@ export default function UserInputControls(props: {
     containerClassName?: string,
     setErrorMessage: (message: string) => void,
     overrideFileUploadId?: string,
-    sampleDataUrl?: string
+    sampleDataUrl?: string,
 }) {
 
     const fileUploadId = props.overrideFileUploadId || "file-upload"
@@ -39,12 +39,8 @@ export default function UserInputControls(props: {
         try {
             console.log("Fetching data from URL:", url)
             const response = await fetch(url)
-            const contentType = response.headers.get("content-type")
-            if (!contentType || !contentType.includes("application/json")) {
-                props.setErrorMessage?.("Invalid content type. Please provide a URL that returns JSON.")
-            }
-            const data = await response.json()
-            props.setInput(JSON.stringify(data, null, 2))
+            const data = await response.body?.getReader().read()
+            props.setInput(new TextDecoder().decode(data?.value))
         } catch (e) {
             props.setErrorMessage("Error while fetching data from URL. Please check the URL and try again.")
             console.error("Error while fetching data from URL:", e)
