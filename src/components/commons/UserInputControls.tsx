@@ -17,7 +17,8 @@ export default function UserInputControls(props: {
     setInput: (input: string) => void,
     containerClassName?: string,
     setErrorMessage: (message: string) => void,
-    overrideFileUploadId?: string
+    overrideFileUploadId?: string,
+    sampleDataUrl?: string
 }) {
 
     const fileUploadId = props.overrideFileUploadId || "file-upload"
@@ -65,7 +66,7 @@ export default function UserInputControls(props: {
                     </Label>
                     <Input
                         id="link"
-                        defaultValue="https://devutils.rohan.gg/sample_data.json"
+                        defaultValue={props.sampleDataUrl}
                     />
                 </div>
             </div>

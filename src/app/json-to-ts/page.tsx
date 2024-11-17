@@ -69,7 +69,7 @@ export default function JsonToTs() {
                         </Alert>
                     )}
                 </div>
-                <UserInputControls setInput={setInput} setErrorMessage={setError} />
+                <UserInputControls setInput={setInput} setErrorMessage={setError} sampleDataUrl={"https://devutils.rohan.gg/samples/json-to-ts.json"} />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
