@@ -16,8 +16,11 @@ import {Input} from "@/components/shadcn/ui/input";
 export default function UserInputControls(props: {
     setInput: (input: string) => void,
     containerClassName?: string,
-    setErrorMessage: (message: string) => void
+    setErrorMessage: (message: string) => void,
+    overrideFileUploadId?: string
 }) {
+
+    const fileUploadId = props.overrideFileUploadId || "file-upload"
 
     const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0]
@@ -82,11 +85,11 @@ export default function UserInputControls(props: {
                     <Link2 className={"mr-2 h-4 w-4"}/> Load from URL
                 </Button>
             </DialogTrigger>
-            <Button variant="outline" onClick={() => document.getElementById('file-upload')?.click()}>
+            <Button variant="outline" onClick={() => document.getElementById(fileUploadId)?.click()}>
                 <Upload className="mr-2 h-4 w-4"/> Upload File
             </Button>
             <input
-                id="file-upload"
+                id={fileUploadId}
                 type="file"
                 onChange={handleFileUpload}
                 className="hidden"
