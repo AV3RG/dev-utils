@@ -1,4 +1,4 @@
-import {FileJson2, Link2, LucideIcon, Sparkles, Volleyball, WholeWord} from "lucide-react";
+import {Ampersand, FileJson2, Link2, LucideIcon, Sparkles, Volleyball, WholeWord} from "lucide-react";
 
 const utils: {
   pathName: string,
@@ -41,6 +41,13 @@ const utils: {
     displayName: "URI Encoder/Decoder",
     cardDescription: "Encode and decode URI strings.",
     cardContent: "Encode and decode URI strings with ease."
+  },
+  {
+    pathName: "/ascii-table",
+    icon: Ampersand,
+    displayName: "ASCII Table",
+    cardDescription: "Get the ASCII table with ease.",
+    cardContent: "Get the ASCII table with search functionality."
   }
 ]
 
