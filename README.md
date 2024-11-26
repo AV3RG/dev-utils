@@ -10,6 +10,11 @@ A collection of developer utility functions that I build in my free time and use
 ## Current Utils
 
 - [**String info**](https://devutils.rohan.gg/strinfo): Get all the info about a string that you will need. Word count. Byte Count. Line Endings and much more
+- [**JSON Prettier**](https://devutils.rohan.gg/json-pretty): Format JSON data in a readable way.
+- [**JSON To TS**](https://devutils.rohan.gg/json-to-ts): Convert JSON to TypeScript interfaces.
+- [**Base64 Encoder/Decoder**](https://devutils.rohan.gg/base-64): Encode or decode text to/from Base64.
+- [**URI Encoder/Decoder**](https://devutils.rohan.gg/uri): Encode or decode text into a URI safe way.
+- [**ASCII Table**](https://devutils.rohan.gg/ascii-table): Get the ASCII value of a character or vice versa.
 - **Color Converter (Coming Soon)**: Convert between different color formats like HEX, RGB, HSL, and more.
 
 ## Usage
