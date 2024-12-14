@@ -1,4 +1,4 @@
-import {Ampersand, FileJson2, Link2, LucideIcon, Sparkles, Volleyball, WholeWord} from "lucide-react";
+import {Ampersand, FileJson2, Link2, LucideIcon, Sparkles, SpellCheck, Volleyball, WholeWord} from "lucide-react";
 
 const utils: {
   pathName: string,
@@ -48,6 +48,13 @@ const utils: {
     displayName: "ASCII Table",
     cardDescription: "Get the ASCII table with ease.",
     cardContent: "Get the ASCII table with search functionality."
+  },
+  {
+    pathName: "/md5",
+    icon: SpellCheck,
+    displayName: "MD5 Checksum",
+    cardDescription: "Calculate MD5 checksum of a string.",
+    cardContent: "Calculate MD5 checksum of a string with ease."
   }
 ]
 
