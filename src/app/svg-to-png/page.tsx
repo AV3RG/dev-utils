@@ -24,7 +24,7 @@ export default function SvgToPng() {
     const [height, setHeight] = useState<number>(50);
     const [width, setWidth] = useState<number>(50);
     const [imageEncodedUrl, setImageEncodedUrl] = useState<string | null>(null);
-    const [error, setError] = useState<string | null>("fasdfsda");
+    const [error, setError] = useState<string | null>(null);
     const { toast } = useToast();
 
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -154,7 +154,7 @@ export default function SvgToPng() {
                     )}
                 </div>
             </div>
-            <Card>
+            <Card className={"w-fit min-w-[500px] min-h-96"}>
                 <CardHeader className={"font-semibold text-xl"}>Image will be displayed here</CardHeader>
                 <CardContent>
                     <canvas ref={canvasRef} width={width} height={height}></canvas>
