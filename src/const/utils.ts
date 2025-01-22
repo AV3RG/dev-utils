@@ -1,4 +1,4 @@
-import {Ampersand, FileJson2, Link2, LucideIcon, Sparkles, Volleyball, WholeWord} from "lucide-react";
+import {Ampersand, FileJson2, Link2, LucideIcon, PenTool, Sparkles, Volleyball, WholeWord} from "lucide-react";
 
 const utils: {
   pathName: string,
@@ -48,6 +48,13 @@ const utils: {
     displayName: "ASCII Table",
     cardDescription: "Get the ASCII table with ease.",
     cardContent: "Get the ASCII table with search functionality."
+  },
+  {
+    pathName: "/svg-to-png",
+    icon: PenTool,
+    displayName: "SVG To PNG",
+    cardDescription: "Convert SVG to PNG with sizing adjustments",
+    cardContent: "Generate SVG to PNG with sizing adjustments."
   }
 ]
 
