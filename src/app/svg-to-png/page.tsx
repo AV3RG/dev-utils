@@ -2,7 +2,7 @@
 
 import React, {useCallback, useEffect, useRef, useState} from "react";
 import {Alert, AlertDescription} from "@/components/shadcn/ui/alert";
-import {AlertCircle, Check, Clipboard, Settings, Upload} from "lucide-react";
+import {AlertCircle, Check, Clipboard, Settings} from "lucide-react";
 import UserInvisibleInputControls from "@/components/commons/UserInvisibleInputControls";
 import {Card, CardContent, CardHeader} from "@/components/shadcn/ui/card";
 import {Button} from "@/components/shadcn/ui/button";
@@ -21,8 +21,8 @@ import {useToast} from "@/hooks/use-toast";
 export default function SvgToPng() {
 
     const [svgTag, setSvgTag] = useState<string>('');
-    const [height, setHeight] = useState<number>(600);
-    const [width, setWidth] = useState<number>(600);
+    const [height, setHeight] = useState<number>(50);
+    const [width, setWidth] = useState<number>(50);
     const [imageEncodedUrl, setImageEncodedUrl] = useState<string | null>(null);
     const [error, setError] = useState<string | null>("fasdfsda");
     const { toast } = useToast();
@@ -37,15 +37,13 @@ export default function SvgToPng() {
                 if (canvasRef.current === null) {
                     throw new Error("No canvas element loaded");
                 }
-                console.log("aaaaa");
                 const canvas = canvasRef.current;
                 const context = canvas.getContext("2d");
                 if (context === null) {
                     throw new Error("Unable to load 2d context in canvas");
                 }
-                canvas.width = width;
-                canvas.height = height;
-                context.drawImage(image, 0, 0);
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(image, 0, 0, canvas.width, canvas.height);
                 const png = canvas.toDataURL("image/png");
                 setImageEncodedUrl(png)
                 setError(null)
@@ -63,7 +61,7 @@ export default function SvgToPng() {
             setError("An error occurred while loading the image");
             setImageEncodedUrl(null);
         }
-    }, [width, height, svgTag]);
+    }, [svgTag]);
 
     useEffect(() => {
         if (svgTag) {
@@ -85,6 +83,7 @@ export default function SvgToPng() {
                         description: "Paste your SVG XML tag here"
                     }}
                     containerClassName={"justify-start"}
+                    inputAccept={".svg"}
                     extraControls={() => {
                         return <>
                             <Button variant="secondary" disabled={!imageEncodedUrl} onClick={() => {
@@ -101,16 +100,16 @@ export default function SvgToPng() {
                                         new ClipboardItem({ [blob.type]: blob }),
                                     ]);
                                     toast({
-                                        title: <div><Check /><span className={"ml-2"}>Copied!</span></div>,
+                                        title: <div className={"flex"}><Check/><span className={"ml-2"}>Copied!</span></div>,
                                         description: "Successfully copied",
                                         variant: "default"
                                     })
                                 })
                             }}>
-                                <Clipboard className="mr-2 h-4 w-4"/> Copy Image to Clipboard
+                            <Clipboard className="mr-2 h-4 w-4"/> Copy Image to Clipboard
                             </Button>
                             <Dialog>
-                                <DialogTrigger>
+                                <DialogTrigger asChild>
                                     <Button variant="ghost" disabled={!imageEncodedUrl}>
                                         <Settings className="mr-2 h-4 w-4"/> Adjust
                                     </Button>
@@ -127,14 +126,14 @@ export default function SvgToPng() {
                                             </Label>
                                             <div className={"relative h-fit ml-4"}>
                                                 <span className={"text-xs absolute transform top-1/2 -translate-y-1/2 left-2 text-gray-400"}>W</span>
-                                                <Input id="width" value="100" className="w-[100px] pl-6" type={"number"} />
+                                                <Input id="width" value={width} className="w-[100px] pl-6" type={"number"} onChange={(element) => setWidth(element.target.valueAsNumber)} />
                                             </div>
                                             <span className={"text-xs text-gray-400 ml-2"}>px</span>
                                             <span className={"ml-4"}>X</span>
                                             <div className={"relative h-fit ml-4"}>
                                                 <span
                                                     className={"text-xs absolute transform top-1/2 -translate-y-1/2 left-2 text-gray-400"}>H</span>
-                                                <Input id="height" value="100" className="w-[100px] pl-6" type={"number"}/>
+                                                <Input id="height" value={height} className="w-[100px] pl-6" type={"number"} onChange={(element) => setHeight(element.target.valueAsNumber)}/>
                                             </div>
                                             <span className={"text-xs text-gray-400 ml-2"}>px</span>
 
@@ -158,7 +157,7 @@ export default function SvgToPng() {
             <Card>
                 <CardHeader className={"font-semibold text-xl"}>Image will be displayed here</CardHeader>
                 <CardContent>
-                    <canvas ref={canvasRef}></canvas>
+                    <canvas ref={canvasRef} width={width} height={height}></canvas>
                 </CardContent>
             </Card>
         </div>

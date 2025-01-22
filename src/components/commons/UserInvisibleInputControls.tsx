@@ -18,6 +18,7 @@ export default function UserInvisibleInputControls(props: {
     setErrorMessage: (message: string) => void,
     overrideFileUploadId?: string,
     sampleDataUrl?: string,
+    inputAccept?: string,
     dialogTexts: {
         title: string,
         description: string,
@@ -80,7 +81,7 @@ export default function UserInvisibleInputControls(props: {
                 type="file"
                 onChange={handleFileUpload}
                 className="hidden"
-                accept=".*/*"
+                accept={props.inputAccept}
             />
             {props.extraControls?.() || <></>}
         </div>
