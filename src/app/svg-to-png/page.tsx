@@ -100,13 +100,13 @@ export default function SvgToPng() {
                                         new ClipboardItem({ [blob.type]: blob }),
                                     ]);
                                     toast({
-                                        title: <div className={"flex"}><Check/><span className={"ml-2"}>Copied!</span></div>,
+                                        action: <div className={"flex"}><Check/><span className={"ml-2"}>Copied!</span></div>,
                                         description: "Successfully copied",
                                         variant: "default"
                                     })
                                 })
                             }}>
-                            <Clipboard className="mr-2 h-4 w-4"/> Copy Image to Clipboard
+                                <Clipboard className="mr-2 h-4 w-4"/> Copy Image to Clipboard
                             </Button>
                             <Dialog>
                                 <DialogTrigger asChild>
