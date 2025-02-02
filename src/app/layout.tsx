@@ -8,7 +8,7 @@ import {
 import React from "react";
 import SideNav from "@/components/commons/SideNav";
 import HeaderTitle from "@/components/commons/HeaderTitle";
-
+import { Toaster } from "@/components/shadcn/ui/toaster"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -59,6 +59,7 @@ export default function RootLayout({
           {children}
         </div>
       </div>
+      <Toaster />
       </body>
     </html>
   );
