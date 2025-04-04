@@ -1,4 +1,4 @@
-import {Ampersand, FileJson2, Link2, LucideIcon, PenTool, Sparkles, Volleyball, WholeWord} from "lucide-react";
+import {Ampersand, FileJson2, Link2, LucideIcon, PenTool, Sparkles, Volleyball, WholeWord, FileText} from "lucide-react";
 
 const utils: {
   pathName: string,
@@ -55,6 +55,13 @@ const utils: {
     displayName: "SVG To PNG",
     cardDescription: "Convert SVG to PNG with sizing adjustments",
     cardContent: "Generate SVG to PNG with sizing adjustments."
+  },
+  {
+    pathName: "/markdown-visualizer",
+    icon: FileText,
+    displayName: "Markdown Visualizer",
+    cardDescription: "Preview your markdown in real-time",
+    cardContent: "Type markdown on the left and see the rendered output on the right."
   }
 ]
 
