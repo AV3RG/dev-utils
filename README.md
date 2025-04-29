@@ -15,6 +15,7 @@ A collection of developer utility functions that I build in my free time and use
 - [**Base64 Encoder/Decoder**](https://devutils.rohan.gg/base-64): Encode or decode text to/from Base64.
 - [**URI Encoder/Decoder**](https://devutils.rohan.gg/uri): Encode or decode text into a URI safe way.
 - [**ASCII Table**](https://devutils.rohan.gg/ascii-table): Get the ASCII value of a character or vice versa.
+- [**Markdown Visualizer**](https://devutils.rohan.gg/markdown-visualizer): Preview your markdown in real-time
 - **Color Converter (Coming Soon)**: Convert between different color formats like HEX, RGB, HSL, and more.
 
 ## Usage
