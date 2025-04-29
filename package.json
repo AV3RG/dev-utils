@@ -3,7 +3,7 @@
   "version": "0.4.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -21,9 +21,9 @@
     "immer": "^10.1.1",
     "lodash.debounce": "^4.0.8",
     "lucide-react": "^0.452.0",
-    "next": "14.2.15",
-    "react": "^18",
-    "react-dom": "^18",
+    "next": "15.3.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
     "tailwind-merge": "^2.5.3",
@@ -33,12 +33,16 @@
   "devDependencies": {
     "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "19.1.2",
+    "@types/react-dom": "19.1.2",
     "eslint": "^8",
-    "eslint-config-next": "14.2.15",
+    "eslint-config-next": "15.3.1",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
+  },
+  "resolutions": {
+    "@types/react": "19.1.2",
+    "@types/react-dom": "19.1.2"
   }
 }
