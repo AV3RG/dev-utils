@@ -1,4 +1,4 @@
-import {Ampersand, FileJson2, Link2, LucideIcon, PenTool, Sparkles, Volleyball, WholeWord, FileText} from "lucide-react";
+import {Ampersand, FileJson2, Link2, LucideIcon, PenTool, Sparkles, Volleyball, WholeWord, FileText, MapPin} from "lucide-react";
 
 const utils: {
   pathName: string,
@@ -62,6 +62,13 @@ const utils: {
     displayName: "Markdown Visualizer",
     cardDescription: "Preview your markdown in real-time",
     cardContent: "Type markdown on the left and see the rendered output on the right."
+  },
+  {
+    pathName: "/ip-info",
+    icon: MapPin,
+    displayName: "IP Info",
+    cardDescription: "Get information about an IP address",
+    cardContent: "Get complete information about an IP address, including location, ISP, and more."
   }
 ]
 
