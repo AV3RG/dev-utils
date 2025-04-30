@@ -7,7 +7,10 @@ import TWClass from "@/types/TWClass";
 export default function ClickToCopy(props: {
     toCopySupplier: () => string,
     buttonClassName?: TWClass,
-    iconClassName?: TWClass
+    clipboardIconClassName?: TWClass,
+    iconOverride?: React.ReactNode,
+    buttonText?: string,
+    buttonTextClassName?: TWClass,
 }) {
     return <Button
         className={cn("p-2 w-fit h-fit", props.buttonClassName)}
@@ -20,6 +23,9 @@ export default function ClickToCopy(props: {
             }
         }}
     >
-        <Clipboard className={cn("h-4 w-4", props.iconClassName)} />
+        {props.iconOverride || (
+            <Clipboard className={cn("h-4 w-4", props.clipboardIconClassName)} />
+        )}
+        {props.buttonText && <span className="ml-2">{props.buttonText}</span>}
     </Button>
 }
