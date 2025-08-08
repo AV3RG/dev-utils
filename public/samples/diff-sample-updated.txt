@@ -1,0 +1,6 @@
+Hello World
+This is a sample file
+for testing the diff generator.
+It contains multiple lines
+of updated text content.
+And this is a new line. 
