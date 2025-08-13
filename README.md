@@ -17,6 +17,7 @@ A collection of developer utility functions that I build in my free time and use
 - [**ASCII Table**](https://devutils.rohan.gg/ascii-table): Get the ASCII value of a character or vice versa.
 - [**Markdown Visualizer**](https://devutils.rohan.gg/markdown-visualizer): Preview your markdown in real-time
 - [**IP Info**](https://devutils.rohan.gg/ip-info): Get information about an IP address
+- [**Diff Generator**](https://devutils.rohan.gg/diff-generator): Generate patch files from original and updated content
 - **Color Converter (Coming Soon)**: Convert between different color formats like HEX, RGB, HSL, and more.
 
 ## Usage

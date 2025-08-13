@@ -1,4 +1,4 @@
-import {Ampersand, FileJson2, Link2, LucideIcon, PenTool, Sparkles, Volleyball, WholeWord, FileText, MapPin} from "lucide-react";
+import {Ampersand, FileJson2, Link2, LucideIcon, PenTool, Sparkles, Volleyball, WholeWord, FileText, MapPin, Split} from "lucide-react";
 
 const utils: {
   pathName: string,
@@ -69,6 +69,13 @@ const utils: {
     displayName: "IP Info",
     cardDescription: "Get information about an IP address",
     cardContent: "Get complete information about an IP address, including location, ISP, and more."
+  },
+  {
+    pathName: "/diff-generator",
+    icon: Split,
+    displayName: "Diff Generator",
+    cardDescription: "Generate patch files from original and updated content",
+    cardContent: "Create unified diff patches that can be applied with git apply or patch command."
   }
 ]
 
