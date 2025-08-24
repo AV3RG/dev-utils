@@ -40,73 +40,91 @@ const IPInfoDisplay = ({ data }: { data: IPInfo }) => {
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Basic Info */}
-        <div className="bg-white p-4 rounded-lg shadow-sm">
+        <div className="bg-card p-4 rounded-lg shadow-sm border border-border">
           <div className="flex items-center gap-2 mb-4">
             <Globe className="h-5 w-5 text-blue-500" />
-            <h3 className="text-lg font-semibold">Basic Information</h3>
+            <h3 className="text-lg font-semibold text-foreground">
+              Basic Information
+            </h3>
           </div>
           <div className="space-y-2">
             <div className="flex justify-between">
-              <span className="text-gray-600">IP Address</span>
-              <span className="font-medium">{data.ip}</span>
+              <span className="text-muted-foreground">IP Address</span>
+              <span className="font-medium text-foreground">{data.ip}</span>
             </div>
           </div>
         </div>
 
         {/* ISP Info */}
-        <div className="bg-white p-4 rounded-lg shadow-sm">
+        <div className="bg-card p-4 rounded-lg shadow-sm border border-border">
           <div className="flex items-center gap-2 mb-4">
             <Wifi className="h-5 w-5 text-green-500" />
-            <h3 className="text-lg font-semibold">ISP Information</h3>
+            <h3 className="text-lg font-semibold text-foreground">
+              ISP Information
+            </h3>
           </div>
           <div className="space-y-2">
             <div className="flex justify-between">
-              <span className="text-gray-600">ASN</span>
-              <span className="font-medium">{data.isp.asn}</span>
+              <span className="text-muted-foreground">ASN</span>
+              <span className="font-medium text-foreground">
+                {data.isp.asn}
+              </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600">Organization</span>
-              <span className="font-medium">{data.isp.org}</span>
+              <span className="text-muted-foreground">Organization</span>
+              <span className="font-medium text-foreground">
+                {data.isp.org}
+              </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600">ISP</span>
-              <span className="font-medium">{data.isp.isp}</span>
+              <span className="text-muted-foreground">ISP</span>
+              <span className="font-medium text-foreground">
+                {data.isp.isp}
+              </span>
             </div>
           </div>
         </div>
 
         {/* Location Info */}
-        <div className="bg-white p-4 rounded-lg shadow-sm">
+        <div className="bg-card p-4 rounded-lg shadow-sm border border-border">
           <div className="flex items-center gap-2 mb-4">
             <MapPin className="h-5 w-5 text-red-500" />
-            <h3 className="text-lg font-semibold">Location</h3>
+            <h3 className="text-lg font-semibold text-foreground">Location</h3>
           </div>
           <div className="space-y-2">
             <div className="flex justify-between">
-              <span className="text-gray-600">Country</span>
-              <span className="font-medium">
+              <span className="text-muted-foreground">Country</span>
+              <span className="font-medium text-foreground">
                 {data.location.country} ({data.location.country_code})
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600">City</span>
-              <span className="font-medium">{data.location.city}</span>
+              <span className="text-muted-foreground">City</span>
+              <span className="font-medium text-foreground">
+                {data.location.city}
+              </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600">State</span>
-              <span className="font-medium">{data.location.state}</span>
+              <span className="text-muted-foreground">State</span>
+              <span className="font-medium text-foreground">
+                {data.location.state}
+              </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600">Timezone</span>
-              <span className="font-medium">{data.location.timezone}</span>
+              <span className="text-muted-foreground">Timezone</span>
+              <span className="font-medium text-foreground">
+                {data.location.timezone}
+              </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600">Local Time</span>
-              <span className="font-medium">{data.location.localtime}</span>
+              <span className="text-muted-foreground">Local Time</span>
+              <span className="font-medium text-foreground">
+                {data.location.localtime}
+              </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600">Coordinates</span>
-              <span className="font-medium">
+              <span className="text-muted-foreground">Coordinates</span>
+              <span className="font-medium text-foreground">
                 {data.location.latitude}, {data.location.longitude}
               </span>
             </div>
@@ -114,61 +132,69 @@ const IPInfoDisplay = ({ data }: { data: IPInfo }) => {
         </div>
 
         {/* Risk Info */}
-        <div className="bg-white p-4 rounded-lg shadow-sm">
+        <div className="bg-card p-4 rounded-lg shadow-sm border border-border">
           <div className="flex items-center gap-2 mb-4">
             <Shield className="h-5 w-5 text-purple-500" />
-            <h3 className="text-lg font-semibold">Risk Assessment</h3>
+            <h3 className="text-lg font-semibold text-foreground">
+              Risk Assessment
+            </h3>
           </div>
           <div className="space-y-2">
             <div className="flex justify-between">
-              <span className="text-gray-600">Risk Score</span>
-              <span className="font-medium">{data.risk.risk_score}</span>
+              <span className="text-muted-foreground">Risk Score</span>
+              <span className="font-medium text-foreground">
+                {data.risk.risk_score}
+              </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600">Mobile</span>
+              <span className="text-muted-foreground">Mobile</span>
               <span
                 className={`font-medium ${
-                  data.risk.is_mobile ? "text-green-600" : "text-gray-600"
+                  data.risk.is_mobile
+                    ? "text-green-600"
+                    : "text-muted-foreground"
                 }`}
               >
                 {data.risk.is_mobile ? "Yes" : "No"}
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600">VPN</span>
+              <span className="text-muted-foreground">VPN</span>
               <span
                 className={`font-medium ${
-                  data.risk.is_vpn ? "text-red-600" : "text-gray-600"
+                  data.risk.is_vpn ? "text-red-600" : "text-muted-foreground"
                 }`}
               >
                 {data.risk.is_vpn ? "Yes" : "No"}
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600">Tor</span>
+              <span className="text-muted-foreground">Tor</span>
               <span
                 className={`font-medium ${
-                  data.risk.is_tor ? "text-red-600" : "text-gray-600"
+                  data.risk.is_tor ? "text-red-600" : "text-muted-foreground"
                 }`}
               >
                 {data.risk.is_tor ? "Yes" : "No"}
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600">Proxy</span>
+              <span className="text-muted-foreground">Proxy</span>
               <span
                 className={`font-medium ${
-                  data.risk.is_proxy ? "text-red-600" : "text-gray-600"
+                  data.risk.is_proxy ? "text-red-600" : "text-muted-foreground"
                 }`}
               >
                 {data.risk.is_proxy ? "Yes" : "No"}
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600">Datacenter</span>
+              <span className="text-muted-foreground">Datacenter</span>
               <span
                 className={`font-medium ${
-                  data.risk.is_datacenter ? "text-red-600" : "text-gray-600"
+                  data.risk.is_datacenter
+                    ? "text-red-600"
+                    : "text-muted-foreground"
                 }`}
               >
                 {data.risk.is_datacenter ? "Yes" : "No"}
@@ -257,7 +283,9 @@ export default function IPInfo() {
   return (
     <div className="container mx-auto p-4">
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-bold">IP Information Lookup</h1>
+        <h1 className="text-2xl font-bold text-foreground">
+          IP Information Lookup
+        </h1>
       </div>
       <div className="flex items-center justify-between mb-4">
         <div>
@@ -278,7 +306,7 @@ export default function IPInfo() {
         <div>
           <label
             htmlFor="ip-input"
-            className="block text-sm font-medium text-gray-700 mb-2"
+            className="block text-sm font-medium text-foreground mb-2"
           >
             IP Address
           </label>
@@ -305,7 +333,6 @@ export default function IPInfo() {
                 <ClickToCopy
                   toCopySupplier={() => JSON.stringify(output, null, 2)}
                   buttonClassName="px-3"
-                  clipboardIconClassName="text-white"
                   buttonText="Copy JSON"
                 />
               )}
@@ -313,20 +340,20 @@ export default function IPInfo() {
           </div>
         </div>
         <div>
-          <h2 className="text-sm font-medium text-gray-700 mb-2">
+          <h2 className="text-sm font-medium text-foreground mb-2">
             IP Information
           </h2>
-          <div className="bg-gray-50 p-4 rounded-md overflow-auto min-h-[300px] relative">
+          <div className="bg-muted p-4 rounded-md overflow-auto min-h-[300px] relative border border-border">
             {loading ? (
               <div className="flex items-center justify-center h-full">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-border"></div>
               </div>
             ) : output ? (
               <>
                 <IPInfoDisplay data={output} />
               </>
             ) : (
-              <div className="text-gray-500 text-center h-full flex items-center justify-center">
+              <div className="text-muted-foreground text-center h-full flex items-center justify-center">
                 Enter an IP address to see its information
               </div>
             )}

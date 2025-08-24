@@ -83,18 +83,18 @@ export default function DiffGenerator() {
   return (
     <div className="container mx-auto p-4 space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Diff Generator</h1>
+        <h1 className="text-2xl font-bold text-foreground">Diff Generator</h1>
       </div>
-      <div className="p-4 bg-blue-50 border border-blue-200 rounded-md">
-        <p className="text-sm text-blue-800">
+      <div className="p-4 bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-md">
+        <p className="text-sm text-blue-800 dark:text-blue-200">
           <strong>How to use:</strong> Enter the original and updated file
           contents, then download the generated patch file. The patch can be
           applied using{" "}
-          <code className="bg-blue-100 px-1 rounded">
+          <code className="bg-blue-100 dark:bg-blue-900/50 px-1 rounded">
             git apply patch-file.patch
           </code>{" "}
           or
-          <code className="bg-blue-100 px-1 rounded">
+          <code className="bg-blue-100 dark:bg-blue-900/50 px-1 rounded">
             patch -p1 &lt; patch-file.patch
           </code>
         </p>
@@ -103,7 +103,7 @@ export default function DiffGenerator() {
       <div>
         <label
           htmlFor="file-name"
-          className="block text-sm font-medium text-gray-700 mb-2"
+          className="block text-sm font-medium text-foreground mb-2"
         >
           File Name (for patch header)
         </label>
@@ -112,7 +112,7 @@ export default function DiffGenerator() {
           type="text"
           value={fileName}
           onChange={(e) => setFileName(e.target.value)}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring bg-background text-foreground"
           placeholder="Enter file name (e.g., example.txt)"
         />
         <Button
@@ -145,7 +145,7 @@ export default function DiffGenerator() {
           <div className="flex justify-between items-center mb-2">
             <label
               htmlFor="original-file"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-foreground"
             >
               Original File
             </label>
@@ -167,7 +167,7 @@ export default function DiffGenerator() {
           <div className="flex justify-between items-center mb-2">
             <label
               htmlFor="updated-file"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-foreground"
             >
               Updated File
             </label>
@@ -189,7 +189,9 @@ export default function DiffGenerator() {
 
       <div className="mt-6">
         <div className="flex justify-between items-center mb-2">
-          <h2 className="text-sm font-medium text-gray-700">Generated Patch</h2>
+          <h2 className="text-sm font-medium text-foreground">
+            Generated Patch
+          </h2>
           {patchOutput && !isGenerating && (
             <Button onClick={handleDownloadPatch} variant="outline" size="sm">
               <Download className="mr-2 h-4 w-4" />
@@ -197,8 +199,8 @@ export default function DiffGenerator() {
             </Button>
           )}
         </div>
-        <div className="bg-gray-100 rounded-md border border-gray-200">
-          <pre className="p-4 overflow-auto max-h-[400px] relative">
+        <div className="bg-muted rounded-md border border-border">
+          <pre className="p-4 overflow-auto max-h-[400px] relative text-foreground">
             <ClickToCopy
               toCopySupplier={() => patchOutput}
               buttonClassName="absolute right-4 top-4 z-10"
