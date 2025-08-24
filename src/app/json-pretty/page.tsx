@@ -51,42 +51,57 @@ export default function JsonPretty() {
     }, [input, prettifyJSON])
 
     return (
-        <div className="container mx-auto p-4">
-            <div className="flex justify-between items-center mb-4">
-                <h1 className="text-2xl font-bold">JSON Prettifier</h1>
-            </div>
-            <div className="flex items-center justify-between mb-4">
-                <div>
-                    {error && (
-                        <Alert variant="destructive" className={"p-2 flex items-center justify-center [&>svg]:absolute [&>svg]:left-3 [&>svg]:top-2"}>
-                            <AlertCircle className="h-4 w-4" />
-                            <AlertDescription>{error}</AlertDescription>
-                        </Alert>
-                    )}
-                </div>
-                <UserInputControls setInput={setInput} setErrorMessage={setError} />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label htmlFor="json-input" className="block text-sm font-medium text-gray-700 mb-2">
-                        Input JSON
-                    </label>
-                    <Textarea
-                        id="json-input"
-                        value={input}
-                        onChange={handleInputChange}
-                        placeholder="Type or paste your JSON here..."
-                        className="min-h-[300px] h-full"
-                    />
-                </div>
-                <div>
-                    <h2 className="text-sm font-medium text-gray-700 mb-2">Prettified Output</h2>
-                    <pre className="bg-gray-100 p-4 rounded-md overflow-auto h-full min-h-[300px] relative">
-                        <ClickToCopy toCopySupplier={() => output} buttonClassName={"absolute right-4 top-4"} />
-                        <code>{output}</code>
-                    </pre>
-                </div>
-            </div>
+      <div className="container mx-auto p-4">
+        <div className="flex justify-between items-center mb-4">
+          <h1 className="text-2xl font-bold text-foreground">
+            JSON Prettifier
+          </h1>
         </div>
-    )
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            {error && (
+              <Alert
+                variant="destructive"
+                className={
+                  "p-2 flex items-center justify-center [&>svg]:absolute [&>svg]:left-3 [&>svg]:top-2"
+                }
+              >
+                <AlertCircle className="h-4 w-4" />
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
+            )}
+          </div>
+          <UserInputControls setInput={setInput} setErrorMessage={setError} />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label
+              htmlFor="json-input"
+              className="block text-sm font-medium text-foreground mb-2"
+            >
+              Input JSON
+            </label>
+            <Textarea
+              id="json-input"
+              value={input}
+              onChange={handleInputChange}
+              placeholder="Type or paste your JSON here..."
+              className="min-h-[300px] h-full"
+            />
+          </div>
+          <div>
+            <h2 className="text-sm font-medium text-foreground mb-2">
+              Prettified Output
+            </h2>
+            <pre className="bg-muted p-4 rounded-md overflow-auto h-full min-h-[300px] relative text-foreground">
+              <ClickToCopy
+                toCopySupplier={() => output}
+                buttonClassName={"absolute right-4 top-4"}
+              />
+              <code>{output}</code>
+            </pre>
+          </div>
+        </div>
+      </div>
+    );
 }

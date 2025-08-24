@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Wrench, Loader } from "lucide-react";
+import { Wrench } from "lucide-react";
 import utils from "@/const/utils";
+import { ThemeToggle } from "./ThemeToggle";
 import {
   Sidebar,
   SidebarContent,
@@ -38,14 +39,16 @@ export function AppSidebar() {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
               {utils.map((util) => (
                 <SidebarMenuItem key={util.pathName}>
-                  <SidebarMenuButton asChild isActive={pathname === util.pathName}>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={pathname === util.pathName}
+                  >
                     <Link href={util.pathName}>
                       <util.icon />
                       <span>{util.displayName}</span>
@@ -57,16 +60,11 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      
+
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <Link href="#" className="cursor-default">
-                <Loader />
-                <span>More Coming Soon...</span>
-              </Link>
-            </SidebarMenuButton>
+            <ThemeToggle />
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>

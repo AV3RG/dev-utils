@@ -5,11 +5,8 @@ import React from "react";
 import { AppSidebar } from "@/components/commons/AppSidebar";
 import HeaderTitle from "@/components/commons/HeaderTitle";
 import { Toaster } from "@/components/shadcn/ui/toaster";
-import {
-  SidebarProvider,
-  SidebarInset,
-  SidebarTrigger,
-} from "@/components/shadcn/ui/sidebar";
+import { ThemeProvider } from "@/components/commons/ThemeProvider";
+import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/shadcn/ui/sidebar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -34,24 +31,42 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const theme = localStorage.getItem('dev-utils-theme') || 'system';
+                if (theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.add('light');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <SidebarProvider>
-          <AppSidebar />
-          <SidebarInset>
-            <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
-              <div className="flex items-center gap-2 px-4">
-                <SidebarTrigger className="-ml-1" />
-                <div className="flex-1">
-                  <HeaderTitle />
+        <ThemeProvider>
+          <SidebarProvider>
+            <AppSidebar />
+            <SidebarInset>
+              <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+                <div className="flex items-center gap-2 px-4">
+                  <SidebarTrigger className="-ml-1" />
+                  <div className="flex-1">
+                    <HeaderTitle />
+                  </div>
                 </div>
-              </div>
-            </header>
-            <div className="flex flex-1 flex-col">{children}</div>
-          </SidebarInset>
-        </SidebarProvider>
-        <Toaster />
+              </header>
+              <div className="flex flex-1 flex-col">{children}</div>
+            </SidebarInset>
+          </SidebarProvider>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );
