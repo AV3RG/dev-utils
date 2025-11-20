@@ -1,4 +1,4 @@
-import {Ampersand, FileJson2, Link2, LucideIcon, PenTool, Sparkles, Volleyball, WholeWord, FileText, MapPin, Split} from "lucide-react";
+import {Ampersand, FileJson2, Link2, LucideIcon, PenTool, Sparkles, Volleyball, WholeWord, FileText, MapPin, Split, Calculator, Shield} from "lucide-react";
 
 const utils: {
   pathName: string,
@@ -76,6 +76,13 @@ const utils: {
     displayName: "Diff Generator",
     cardDescription: "Generate patch files from original and updated content",
     cardContent: "Create unified diff patches that can be applied with git apply or patch command."
+  },
+  {
+    pathName: "/ssl-checker",
+    icon: Shield,
+    displayName: "SSL Checker",
+    cardDescription: "Check SSL certificate details for any URL",
+    cardContent: "View certificate issuer, validity dates, subject information, and certificate chain."
   }
 ]
 
