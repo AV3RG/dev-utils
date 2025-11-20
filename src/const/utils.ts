@@ -1,4 +1,4 @@
-import {Ampersand, FileJson2, Link2, LucideIcon, PenTool, Sparkles, Volleyball, WholeWord, FileText, MapPin, Split, Calculator, Shield} from "lucide-react";
+import {Ampersand, FileJson2, Link2, LucideIcon, PenTool, Sparkles, Volleyball, WholeWord, FileText, MapPin, Split, Shield} from "lucide-react";
 
 const utils: {
   pathName: string,

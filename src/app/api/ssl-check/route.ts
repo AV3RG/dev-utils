@@ -33,6 +33,18 @@ interface CertificateInfo {
   }>;
 }
 
+// Extended PeerCertificate interface to include properties not in the base type
+type ExtendedPeerCertificate = tls.PeerCertificate & {
+  signatureAlgorithm?: string;
+  pubkey?: {
+    algorithm?: string;
+  };
+  publicKey?: {
+    algorithm?: string;
+  };
+  issuerCertificate?: ExtendedPeerCertificate;
+};
+
 function parseCertificate(cert: tls.PeerCertificate): CertificateInfo {
   const now = new Date();
   const validFrom = new Date(cert.valid_from);
@@ -41,8 +53,8 @@ function parseCertificate(cert: tls.PeerCertificate): CertificateInfo {
 
   // Extract subject - cert.subject is an object in Node.js TLS
   const subject: CertificateInfo['subject'] = {};
-  if (cert.subject) {
-    const subjectObj = cert.subject as any; // Type assertion for flexibility
+  if (cert.subject && typeof cert.subject === 'object') {
+    const subjectObj = cert.subject as unknown as Record<string, string | undefined>;
     subject.CN = subjectObj.CN;
     subject.O = subjectObj.O;
     subject.OU = subjectObj.OU;
@@ -54,8 +66,8 @@ function parseCertificate(cert: tls.PeerCertificate): CertificateInfo {
 
   // Extract issuer - cert.issuer is an object in Node.js TLS
   const issuer: CertificateInfo['issuer'] = {};
-  if (cert.issuer) {
-    const issuerObj = cert.issuer as any; // Type assertion for flexibility
+  if (cert.issuer && typeof cert.issuer === 'object') {
+    const issuerObj = cert.issuer as unknown as Record<string, string | undefined>;
     issuer.CN = issuerObj.CN;
     issuer.O = issuerObj.O;
     issuer.OU = issuerObj.OU;
@@ -75,8 +87,8 @@ function parseCertificate(cert: tls.PeerCertificate): CertificateInfo {
     daysRemaining,
     serialNumber: cert.serialNumber || 'N/A',
     fingerprint: formattedFingerprint,
-    signatureAlgorithm: (cert as any).signatureAlgorithm || 'N/A',
-    publicKeyAlgorithm: (cert as any).pubkey?.algorithm || (cert as any).publicKey?.algorithm || 'N/A',
+    signatureAlgorithm: (cert as ExtendedPeerCertificate).signatureAlgorithm || 'N/A',
+    publicKeyAlgorithm: (cert as ExtendedPeerCertificate).pubkey?.algorithm || (cert as ExtendedPeerCertificate).publicKey?.algorithm || 'N/A',
   };
 }
 
@@ -97,7 +109,7 @@ function parseURL(url: string): { hostname: string; port: number } | null {
     }
 
     return { hostname, port };
-  } catch (error) {
+  } catch {
     return null;
   }
 }
@@ -131,7 +143,7 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  return new Promise((resolve) => {
+  return new Promise<NextResponse>((resolve) => {
     const options: tls.ConnectionOptions = {
       host: hostname,
       port: port,
@@ -145,26 +157,28 @@ export async function GET(request: NextRequest) {
         const certInfo = parseCertificate(cert);
 
         // Parse certificate chain if available
-        const issuerCert = (cert as any).issuerCertificate;
+        const issuerCert = (cert as ExtendedPeerCertificate).issuerCertificate;
         if (issuerCert) {
           const chain: CertificateInfo['certificateChain'] = [];
-          let currentCert: tls.PeerCertificate | undefined = issuerCert;
+          let currentCert: ExtendedPeerCertificate | undefined = issuerCert;
           let depth = 0;
           const maxDepth = 10; // Prevent infinite loops
 
           // Helper function to format subject/issuer as string
-          const formatDN = (dn: any): string => {
+          const formatDN = (dn: unknown): string => {
             if (!dn) return 'N/A';
             if (typeof dn === 'string') return dn;
             if (typeof dn === 'object') {
+              // Cast to Record to access properties that may exist on Certificate objects
+              const dnObj = dn as unknown as Record<string, string | undefined>;
               const parts: string[] = [];
-              if (dn.CN) parts.push(`CN=${dn.CN}`);
-              if (dn.O) parts.push(`O=${dn.O}`);
-              if (dn.OU) parts.push(`OU=${dn.OU}`);
-              if (dn.C) parts.push(`C=${dn.C}`);
-              if (dn.ST) parts.push(`ST=${dn.ST}`);
-              if (dn.L) parts.push(`L=${dn.L}`);
-              return parts.join(', ');
+              if (dnObj.CN) parts.push(`CN=${dnObj.CN}`);
+              if (dnObj.O) parts.push(`O=${dnObj.O}`);
+              if (dnObj.OU) parts.push(`OU=${dnObj.OU}`);
+              if (dnObj.C) parts.push(`C=${dnObj.C}`);
+              if (dnObj.ST) parts.push(`ST=${dnObj.ST}`);
+              if (dnObj.L) parts.push(`L=${dnObj.L}`);
+              return parts.length > 0 ? parts.join(', ') : 'N/A';
             }
             return 'N/A';
           };
@@ -184,7 +198,7 @@ export async function GET(request: NextRequest) {
               break;
             }
 
-            currentCert = (currentCert as any).issuerCertificate;
+            currentCert = currentCert.issuerCertificate;
             depth++;
           }
 
